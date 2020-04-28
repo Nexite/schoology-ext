@@ -10,6 +10,7 @@ let clearCount = 0;
 let data;
 
 const addInfo = function(str, append) {
+  input.value = '';
   if (append) return info.innerHTML += str + '<br>';
   info.innerHTML = str + '<br>';
 }
@@ -22,7 +23,7 @@ const resetStorage = function() {
   });
 }
 
-const getStorage = function() {
+const getStorage = function(callback = uploadStorage) {
   chromeStorage.get('schoology-data', function(rawData) {
     
     data = rawData['schoology-data'];
@@ -32,7 +33,7 @@ const getStorage = function() {
       resetStorage();
       getStorage();
     } else {
-      uploadStorage();
+      callback();
     }
   })
 }
@@ -50,23 +51,37 @@ const uploadStorage = function() {
     chromeStorage.get('schoology-data', function(result){
       console.log(result);
       addInfo(`ID Uploaded (${input.value})`, true)
-      input.value = '';
     })
   });
 }
 
 uploadBtn.addEventListener('click', () => {
   clearText.innerHTML = '';
-  if (input.value === '') {chrome.storage.local.get(function(result){console.log(result)}); return}
+  if (input.value === '') {chromeStorage.get(function(result){console.log(result)}); return}
   getStorage();
 })
 
-// removeBtn.addEventListener('click', function() {
-//   if (input.value === '') return;
+const removedIDs = [];
+
+removeBtn.addEventListener('click', function() {
+  if (input.value === '') return;
 
 
-// })
+  getStorage(function() {
+    
+    if (removedIDs.includes(Number(input.value))) return addInfo(`ID Already Removed!`, false);
+    
+    const newData = data.filter(obj => Number(obj.id) !== Number(input.value))
+    
+    chromeStorage.set({ "schoology-data": newData }, () => {
+      removedIDs.push(Number(input.value));
+      chromeStorage.get(function(result){console.log(result)})
+      addInfo(`Removed ID (${input.value})`, true);
+    })
 
+  });
+
+})
 
 clearBtn.addEventListener('click', function() {
   resetStorage();

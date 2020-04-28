@@ -6,6 +6,13 @@ const submitBtn = document.querySelector(`a[href="/assignment/${assignmentId}/dr
 
 let schoologyData;
 
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    assignments = document.querySelectorAll("div.upcoming-event.course-event a");
+    getStorage();
+  }
+};
+
 const getStorage = function() {
   chromeStorage.get('schoology-data', function(rawData) {
     schoologyData = rawData['schoology-data']
@@ -38,7 +45,5 @@ const writeStorage = function() {
   });
 
 }
-
-getStorage();
 
 // chrome.storage.local.get(function(result){console.log(result)})

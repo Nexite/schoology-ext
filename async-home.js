@@ -56,7 +56,7 @@ const writeChecks = function() {
   
   // console.log(schoologyData)
   // console.log(completedID);
-  logAssignments();
+  // logAssignments();
   
 }
 
