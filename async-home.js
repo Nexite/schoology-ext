@@ -14,11 +14,9 @@ const logAssignments = function() {
   assignments.forEach(assignment => console.log(Number(assignment.pathname.split('/')[2])));
 }
   
-
 const getStorage = function() {
   chromeStorage.get('schoology-data', function(rawData) {
     schoologyData = rawData['schoology-data']
-
     if (typeof schoologyData === 'undefined') {
       chromeStorage.set({ 'schoology-data': [] }, getStorage)
     } else {
