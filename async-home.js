@@ -3,12 +3,17 @@ const chromeStorage = chrome.storage.local;
 let schoologyData;
 let assignments;
 
-document.onreadystatechange = () => {
-  if (document.readyState === 'complete') {
-    assignments = document.querySelectorAll("div.upcoming-event.course-event a");
-    getStorage();
-  }
-};
+$(function() {
+  assignments = document.querySelectorAll("div.upcoming-event.course-event a");
+  getStorage();
+});
+
+// document.onreadystatechange = () => {
+//   if (document.readyState === 'complete') {
+//     assignments = document.querySelectorAll("div.upcoming-event.course-event a");
+//     getStorage();
+//   }
+// };
 
 const logAssignments = function() {
   assignments.forEach(assignment => console.log(Number(assignment.pathname.split('/')[2])));

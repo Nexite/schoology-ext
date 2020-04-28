@@ -5,7 +5,7 @@
   "content_scripts": [
     {
       "matches": ["https://schoology.monroeisd.us/home"],
-      "js": ["async-home.js"]
+      "js": ["jquery-3.5.0.min.js","async-home.js"]
     },
     {
       "matches": ["https://schoology.monroeisd.us/assignment/*"],
@@ -18,5 +18,9 @@
   "permissions": [
     "http://127.0.0.1/",
     "storage"
-  ]
+  ],
+  "background":
+  {
+      "scripts": ["jquery-3.5.0.min.js"]
+  }
 }
