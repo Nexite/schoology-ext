@@ -9,7 +9,7 @@
     },
     {
       "matches": ["https://schoology.monroeisd.us/assignment/*"],
-      "js": ["async-assignment.js"]
+      "js": ["jquery-3.5.0.min.js","async-assignment.js"]
     }
   ],
   "browser_action": {
