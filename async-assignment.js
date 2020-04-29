@@ -16,7 +16,7 @@ $(function() {
   getStorage();
 
   const btnInterval = setInterval(function() {
-    if (submitBtn.textContent !== 'Submit Assignment' || $(`a[href="/assignment/${assignmentId}/dropbox/submit"]`).text() !== 'Submit Assignment' ) {
+    if ($(`a[href="/assignment/${assignmentId}/dropbox/submit"]`).text() !== 'Submit Assignment' ) {
 
       clearInterval(btnInterval);
 
@@ -26,7 +26,7 @@ $(function() {
 
     }
 
-    submitBtn = document.querySelector(`a[href="/assignment/${assignmentId}/dropbox/submit"]`);
+    // submitBtn = document.querySelector(`a[href="/assignment/${assignmentId}/dropbox/submit"]`);
 
     console.log('Assignment not submitted...');
 
@@ -49,7 +49,7 @@ const getStorage = function() {
 }
 
 const writeStorage = function() {
-  if (submitBtn.textContent === 'Submit Assignment') return console.log('Assignment not submitted\nNo action taken.');
+  if ($(`a[href="/assignment/${assignmentId}/dropbox/submit"]`).text() === 'Submit Assignment') return console.log('Assignment not submitted\nNo action taken.');
 
   // console.log('Assignment Submitted');
 
