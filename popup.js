@@ -61,7 +61,7 @@ uploadBtn.addEventListener('click', () => {
   getStorage();
 })
 
-const removedIDs = [];
+// const removedIDs = [];
 
 removeBtn.addEventListener('click', function() {
   if (input.value === '') return;
@@ -69,12 +69,12 @@ removeBtn.addEventListener('click', function() {
 
   getStorage(function() {
     
-    if (removedIDs.includes(Number(input.value))) return addInfo(`ID Already Removed!`, false);
-    
     const newData = data.filter(obj => Number(obj.id) !== Number(input.value))
     
+    if (data.length === newData.length) return addInfo(`ID Already Removed!`, false);
+    
     chromeStorage.set({ "schoology-data": newData }, () => {
-      removedIDs.push(Number(input.value));
+      // removedIDs.push(Number(input.value));
       chromeStorage.get(function(result){console.log(result)})
       addInfo(`Removed ID (${input.value})`, true);
     })

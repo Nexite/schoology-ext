@@ -28,33 +28,7 @@ $(function() {
 
   }, 500)
 
-  // $("body").on('DOMSubtreeModified', 'a.add.dropbox-submit', function() {
-
-  //   console.log('TEXT CHANGED!!!!')
-  //   getStorage();
-
-  // });
-
-  // $(`a[href="/assignment/${assignmentId}/dropbox/submit"]`).on('click', function() {
-
-  //   $("body").on('DOMSubtreeModified', 'div.submit-buttons', function() {
-
-  //     $('div.submit-buttons')
-
-  //     $("div.submit-buttons input#edit-submit.form-submit");
-
-  //     if ($("div.submit-buttons input#edit-submit.form-submit")[0] === undefined) return console.log('bruh');
-
-  //     console.log($("div.submit-buttons input#edit-submit.form-submit")[0]);
-  //     $("body").unbind();
-
-  //   });
-
-  // });
-
 });
-
-
 
 const getStorage = function() {
   chromeStorage.get('schoology-data', function(rawData) {
