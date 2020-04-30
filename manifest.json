@@ -1,19 +1,19 @@
 {
   "manifest_version": 2,
   "name": "Schoology Check",
-  "version": "1.1.8",
+  "version": "1.2.1",
   "content_scripts": [
     {
       "matches": ["https://schoology.monroeisd.us/home"],
-      "js": ["jquery-3.5.0.min.js", "shared.js","async-home.js"]
+      "js": ["src/jquery-3.5.0.min.js", "src/shared.js","src/async-home.js"]
     },
     {
       "matches": ["https://schoology.monroeisd.us/assignment/*"],
-      "js": ["jquery-3.5.0.min.js", "shared.js","async-assignment.js"]
+      "js": ["src/jquery-3.5.0.min.js", "src/shared.js","src/async-assignment.js"]
     }
   ],
   "browser_action": {
-    "default_popup": "popup.html"
+    "default_popup": "public/popup.html"
   },
   "permissions": [
     "http://127.0.0.1/",
@@ -21,6 +21,6 @@
   ],
   "background":
   {
-      "scripts": ["jquery-3.5.0.min.js"]
+      "scripts": ["src/jquery-3.5.0.min.js"]
   }
 }
