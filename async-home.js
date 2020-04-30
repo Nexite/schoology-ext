@@ -1,27 +1,13 @@
-const urlPath = window.location.pathname;
-const chromeStorage = chrome.storage.local;
-let schoologyData;
 let assignments;
 
 // jQuery Document Ready
 $(function() {
   assignments = document.querySelectorAll("div.upcoming-event.course-event a");
-  getStorage();
+  getStorage(writeChecks);
 });
 
 const logAssignments = function() {
   assignments.forEach(assignment => console.log(Number(assignment.pathname.split('/')[2])));
-}
-  
-const getStorage = function() {
-  chromeStorage.get('schoology-data', function(rawData) {
-    schoologyData = rawData['schoology-data']
-    if (typeof schoologyData === 'undefined') {
-      chromeStorage.set({ 'schoology-data': [] }, getStorage)
-    } else {
-      writeChecks();
-    }
-  })
 }
 
 const writeChecks = function() {

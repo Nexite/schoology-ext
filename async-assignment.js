@@ -1,18 +1,14 @@
-const urlPath = window.location.pathname;
 const assignmentId = Number(urlPath.split('/')[2]);
-const chromeStorage = chrome.storage.local;
-
 const submitBtn = `a[href="/assignment/${assignmentId}/dropbox/submit"]`;
-let schoologyData = [];
 
 // jQuery Document Ready
 $(function() {
 
   if ($(submitBtn)[0] === undefined) return console.log('One or more variables is undefined... Report to developer.');
 
-  getStorage();
+  getStorage(writeStorage);
 
-  checkBtn();
+  setTimeout(checkBtn, 500);
   
 });
 
@@ -20,7 +16,7 @@ const checkBtn = function() {
 
   if ($(submitBtn).text() !== 'Submit Assignment' ) {
 
-    getStorage();
+    getStorage(writeStorage);
 
     return console.log('Assignment submitted! Clearing interval and executing getStorage()');
 
@@ -29,21 +25,6 @@ const checkBtn = function() {
   console.log('Assignment not submitted...');
   
   setTimeout(checkBtn, 500);
-
-}
-
-const getStorage = function() {
-  chromeStorage.get('schoology-data', function({ 'schoology-data': storedArr }) {
-
-    schoologyData = storedArr;
-
-    if (typeof schoologyData === 'undefined') {
-      chromeStorage.set({ 'schoology-data': [] }, getStorage)
-    } else {
-      writeStorage();
-    }
-
-  })
 
 }
 
