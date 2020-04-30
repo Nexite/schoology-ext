@@ -12,28 +12,31 @@ $(function() {
 
   getStorage();
 
-  const btnInterval = setInterval(function() {
-    if ($(submitBtn).text() !== 'Submit Assignment' ) {
-
-      clearInterval(btnInterval);
-
-      getStorage();
-
-      return console.log('Assignment submitted! Clearing interval and executing getStorage()');
-
-    }
-
-    console.log('Assignment not submitted...');
-
-  }, 500)
-
+  checkBtn();
+  
 });
+
+const checkBtn = function() {
+
+  if ($(submitBtn).text() !== 'Submit Assignment' ) {
+
+    getStorage();
+
+    return console.log('Assignment submitted! Clearing interval and executing getStorage()');
+
+  }
+
+  console.log('Assignment not submitted...');
+  
+  setTimeout(checkBtn, 500);
+
+}
 
 const getStorage = function() {
   chromeStorage.get('schoology-data', function({ 'schoology-data': storedArr }) {
 
     schoologyData = storedArr;
-    
+
     if (typeof schoologyData === 'undefined') {
       chromeStorage.set({ 'schoology-data': [] }, getStorage)
     } else {
