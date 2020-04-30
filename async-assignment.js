@@ -2,21 +2,18 @@ const urlPath = window.location.pathname;
 const assignmentId = Number(urlPath.split('/')[2]);
 const chromeStorage = chrome.storage.local;
 
-let submitBtn = document.querySelector(`a[href="/assignment/${assignmentId}/dropbox/submit"]`);
-// let assignments;
-let schoologyData;
+const submitBtn = `a[href="/assignment/${assignmentId}/dropbox/submit"]`;
+let schoologyData = [];
 
 // jQuery Document Ready
 $(function() {
 
-  // assignments = document.querySelectorAll("div.upcoming-event.course-event a");
-  submitBtn = document.querySelector(`a[href="/assignment/${assignmentId}/dropbox/submit"]`);
-  if (submitBtn === null) return console.log('One or more variables is undefined... Report to developer.');
+  if ($(submitBtn)[0] === undefined) return console.log('One or more variables is undefined... Report to developer.');
 
   getStorage();
 
   const btnInterval = setInterval(function() {
-    if ($(`a[href="/assignment/${assignmentId}/dropbox/submit"]`).text() !== 'Submit Assignment' ) {
+    if ($(submitBtn).text() !== 'Submit Assignment' ) {
 
       clearInterval(btnInterval);
 
@@ -26,8 +23,6 @@ $(function() {
 
     }
 
-    // submitBtn = document.querySelector(`a[href="/assignment/${assignmentId}/dropbox/submit"]`);
-
     console.log('Assignment not submitted...');
 
   }, 500)
@@ -35,9 +30,10 @@ $(function() {
 });
 
 const getStorage = function() {
-  chromeStorage.get('schoology-data', function(rawData) {
-    schoologyData = rawData['schoology-data']
+  chromeStorage.get('schoology-data', function({ 'schoology-data': storedArr }) {
 
+    schoologyData = storedArr;
+    
     if (typeof schoologyData === 'undefined') {
       chromeStorage.set({ 'schoology-data': [] }, getStorage)
     } else {
@@ -49,9 +45,7 @@ const getStorage = function() {
 }
 
 const writeStorage = function() {
-  if ($(`a[href="/assignment/${assignmentId}/dropbox/submit"]`).text() === 'Submit Assignment') return console.log('Assignment not submitted\nNo action taken.');
-
-  // console.log('Assignment Submitted');
+  if ($(submitBtn).text() === 'Submit Assignment') return console.log('Assignment not submitted\nNo action taken.');
 
   if (schoologyData.some(obj => obj.id === assignmentId)) return console.log('Assignment already in Chrome Storage.')
 
