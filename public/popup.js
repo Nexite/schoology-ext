@@ -1,13 +1,9 @@
-const input = document.getElementById('id-input')
-const uploadBtn = document.getElementById('upload')
+const input = $('#id-input')[0];
+const uploadBtn = $('#upload')[0];
 const clearBtn = document.getElementById('clear');
 const removeBtn = document.getElementById('remove');
 const clearText = document.querySelector('.clearText');
-const info = document.getElementById('info')
-const chromeStorage = chrome.storage.local;
-
-let clearCount = 0;
-let data;
+const info = document.getElementById('info');
 
 const addInfo = function(str, append) {
   input.value = '';
@@ -23,31 +19,16 @@ const resetStorage = function() {
   });
 }
 
-const getStorage = function(callback = uploadStorage) {
-  chromeStorage.get('schoology-data', function(rawData) {
-    
-    data = rawData['schoology-data'];
-  
-    if (typeof data === 'undefined') {
-      console.log('Schoology data is undefined! Resetting...')
-      resetStorage();
-      getStorage();
-    } else {
-      callback();
-    }
-  })
-}
-
 const uploadStorage = function() {
   let duplicateValue = false;
   
-  data.forEach(obj => { if(Number(obj.id) === Number(input.value)) duplicateValue = true } )
+  schoologyData.forEach(obj => { if(Number(obj.id) === Number(input.value)) duplicateValue = true } )
 
   if(duplicateValue) return addInfo('No Duplicate Values!', false);
 
-  data.push({ id: Number(input.value) });
+  schoologyData.push({ id: Number(input.value) });
 
-  chromeStorage.set({ "schoology-data": data }, function() {;
+  chromeStorage.set({ "schoology-data": schoologyData }, function() {;
     chromeStorage.get('schoology-data', function(result){
       console.log(result);
       addInfo(`ID Uploaded (${input.value})`, true)
@@ -57,21 +38,22 @@ const uploadStorage = function() {
 
 uploadBtn.addEventListener('click', () => {
   clearText.innerHTML = '';
+  clearCount = 0;
   if (input.value === '') {chromeStorage.get(function(result){console.log(result)}); return}
-  getStorage();
+  getStorage(uploadStorage);
 })
 
 // const removedIDs = [];
 
 removeBtn.addEventListener('click', function() {
-  if (input.value === '') return;
 
+  if (input.value === '') return;
 
   getStorage(function() {
     
-    const newData = data.filter(obj => Number(obj.id) !== Number(input.value))
+    const newData = schoologyData.filter(obj => Number(obj.id) !== Number(input.value))
     
-    if (data.length === newData.length) return addInfo(`ID Already Removed!`, false);
+    if (schoologyData.length === newData.length) return addInfo(`ID Already Removed!`, false);
     
     chromeStorage.set({ "schoology-data": newData }, () => {
       // removedIDs.push(Number(input.value));
@@ -83,9 +65,10 @@ removeBtn.addEventListener('click', function() {
 
 })
 
+let clearCount = 0;
+
 clearBtn.addEventListener('click', function() {
   resetStorage();
-  addInfo('', false);
   clearText.innerHTML = clearCount === 0 ? 'Cleared!' : `Cleared ${clearCount + 1} times!`
   clearCount++
 })

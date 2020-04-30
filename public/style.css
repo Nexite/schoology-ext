@@ -1,0 +1,28 @@
+body {
+  /* height: 15em; */
+  width: 16em;  
+}
+
+h2 {
+  color: rgb(49, 49, 49)
+}
+
+.container {
+  margin: auto auto;
+  /* padding: 10em 7em 5em 3em */
+
+}
+
+input#id-input {
+  margin: auto auto;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+button {
+  display: block;
+  width: 100%;
+  /* margin: auto auto; */
+  padding: 0.2em;
+  margin-bottom: 0.5em;
+}

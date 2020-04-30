@@ -3,20 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
   <title>Document</title>
 </head>
 <body>
-  <h2>Input Assignment ID's</h2>
-  <div>
+
+  <div class="container my-3">
+    <h2>Input Assignment ID's</h2>
     <input type="number" id="id-input" placeholder="ID">
-    <button id="upload">Upload</button>
-    <button id="remove">Remove</button>
+    <div>
+      <button id="upload">Upload</button>
+      <button id="remove">Remove</button>
+      <button id="clear">Clear Checks</button>
+    </div>
+  
+    <p class="clearText"></p>
+    <p id="info"></p>
   </div>
 
-  <button id="clear">Clear</button>
-  <p class="clearText"></p>
-  <p id="info"></p>
-
+  <script src="../src/jquery-3.5.0.min.js"></script>
+  <!-- <script src="./bootstrap.bundle.min.js"></script> -->
+  <script src="../src/shared.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>
