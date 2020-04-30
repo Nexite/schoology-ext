@@ -1,5 +1,5 @@
 const urlPath = window.location.pathname;
-const chromeStorage = chrome.storage.local;
+const chromeStorage = chrome.storage.sync;
 
 let schoologyData = [];
 
