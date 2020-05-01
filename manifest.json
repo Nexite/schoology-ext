@@ -17,7 +17,6 @@
     "default-icon": "public/schoology-icon.png"
   },
   "permissions": [
-    "http://127.0.0.1/",
     "storage"
   ],
   "background": {
