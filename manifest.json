@@ -2,6 +2,7 @@
   "manifest_version": 2,
   "name": "Schoology Check",
   "version": "1.2.1",
+  "author": "Jacob Sadowyj",
   "content_scripts": [{
       "matches": ["https://schoology.monroeisd.us/home", "https://app.schoology.com/", "https://app.schoology.com/*"],
       "js": ["src/jquery-3.5.0.min.js", "src/shared.js", "src/async-home.js"]
@@ -12,7 +13,8 @@
     }
   ],
   "browser_action": {
-    "default_popup": "public/popup.html"
+    "default_popup": "public/popup.html",
+    "default-icon": "public/schoology-icon.png"
   },
   "permissions": [
     "http://127.0.0.1/",
@@ -20,5 +22,10 @@
   ],
   "background": {
     "scripts": ["src/jquery-3.5.0.min.js"]
+  },
+  "icons": { 
+    "16": "public/schoology-icon.png",
+    "48": "public/schoology-icon.png",
+   "128": "public/schoology-icon.png" 
   }
 }
