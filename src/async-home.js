@@ -2,13 +2,15 @@ let assignments;
 
 // jQuery Document Ready
 $(function() {
-  assignments = document.querySelectorAll("div.upcoming-event.course-event a");
+  assignments = $("div.upcoming-event.course-event a").toArray()
+  console.log('Document Ready...')
+  console.log(assignments)
   getStorage(writeChecks);
 });
 
-const logAssignments = function() {
-  assignments.forEach(assignment => console.log(Number(assignment.pathname.split('/')[2])));
-}
+// const logAssignments = function() {
+//   assignments.forEach(assignment => console.log(Number(assignment.pathname.split('/')[2])));
+// }
 
 const writeChecks = function() {
 
@@ -30,16 +32,13 @@ const writeChecks = function() {
 
     let span = document.createElement('span');
 
+    span.className += 'check';
+
     span.innerHTML = '✔'
 
     element.parentNode.insertBefore(span, element.nextSibling);
 
   })
-
-  
-  // console.log(schoologyData)
-  // console.log(completedID);
-  // logAssignments();
   
 }
 

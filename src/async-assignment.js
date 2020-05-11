@@ -1,5 +1,5 @@
 const assignmentId = Number(urlPath.split('/')[2]);
-const submitBtn = `a[href="/assignment/${assignmentId}/dropbox/submit"]`;
+const submitBtn = `a[href="/assignment/${assignmentId}/dropbox/submit"].link-btn`;
 
 // jQuery Document Ready
 $(function() {
@@ -14,8 +14,8 @@ $(function() {
 
 const checkBtn = function() {
 
-  if ($(submitBtn).text() !== 'Submit Assignment' ) {
-
+  if ($(submitBtn).text() !== 'Submit Assignment' && $(submitBtn).text() !== 'Edit Draft') {
+    
     getStorage(writeStorage);
 
     return console.log('Assignment submitted! Clearing interval and executing getStorage()');
@@ -29,7 +29,7 @@ const checkBtn = function() {
 }
 
 const writeStorage = function() {
-  if ($(submitBtn).text() === 'Submit Assignment') return console.log('Assignment not submitted\nNo action taken.');
+  if ($(submitBtn).text() === 'Submit Assignment' || $(submitBtn).text() === 'Edit Draft') return console.log('Assignment not submitted\nNo action taken.');
 
   if (schoologyData.some(obj => obj.id === assignmentId)) return console.log('Assignment already in Chrome Storage.')
 
