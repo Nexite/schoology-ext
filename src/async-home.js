@@ -1,30 +1,31 @@
-let assignments;
+const assignments = 'div.upcoming-event.course-event a'
+const intervalTimer = 200;
 
 // jQuery Document Ready
 $(function() {
-  assignments = $("div.upcoming-event.course-event a").toArray()
-  console.log('Document Ready...')
-  console.log(assignments)
-  getStorage(writeChecks);
+  console.log('jQuery Ready...');
+  setTimeout(assignmentsInterval, intervalTimer);
 });
 
-// const logAssignments = function() {
-//   assignments.forEach(assignment => console.log(Number(assignment.pathname.split('/')[2])));
-// }
+const assignmentsInterval = function() {
+  if ($(assignments).length > 0) return getStorage(writeChecks);
+  setTimeout(assignmentsInterval, intervalTimer);
+};
 
 const writeChecks = function() {
 
   let completedID = [];
-  
-  assignments.forEach(assignment => {
-    let relURL = assignment.pathname;
+
+  $(assignments).each(function() {
+    let relURL = this.pathname;
 
     let assignmentID = Number(relURL.split('/')[2]);
 
     if(!relURL.includes('assignment')) return;
 
     schoologyData.forEach(obj => { if(Number(obj.id) == assignmentID) completedID.push(assignmentID) });
-  })
+
+  });
 
   completedID.forEach(id => {
 
@@ -34,7 +35,7 @@ const writeChecks = function() {
 
     span.className += 'check';
 
-    span.innerHTML = '✔'
+    span.innerHTML = '✔';
 
     element.parentNode.insertBefore(span, element.nextSibling);
 
