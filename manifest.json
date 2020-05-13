@@ -1,7 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Schoology Check",
-  "version": "1.3.1",
+  "description": "",
+  "version": "1.3.5",
   "author": "Jacob Sadowyj",
   "content_scripts": [{
       "matches": ["https://schoology.monroeisd.us/home", "https://app.schoology.com/", "https://app.schoology.com/*"],

@@ -1,35 +1,37 @@
 const assignmentId = Number(urlPath.split('/')[2]);
 const submitBtn = `a[href="/assignment/${assignmentId}/dropbox/submit"].link-btn`;
+const grade = '.grading-grade'
+const receivedGrade = '.grading-grade span.received-grade'
 
 // jQuery Document Ready
 $(function() {
 
   if ($(submitBtn)[0] === undefined) return console.log('One or more variables is undefined... Report to developer.');
 
-  getStorage(writeStorage);
-
-  setTimeout(checkBtn, 500);
+  setTimeout(checkCompleted, 500);
   
 });
 
-const checkBtn = function() {
+const checkCompleted = function() {
 
   if ($(submitBtn).text() !== 'Submit Assignment' && $(submitBtn).text() !== 'Edit Draft') {
-    
-    getStorage(writeStorage);
+    console.log('Assignment submitted! Clearing interval and executing getStorage()');
+    return getStorage(writeStorage);
+  };
 
-    return console.log('Assignment submitted! Clearing interval and executing getStorage()');
-
-  }
+  if($(receivedGrade)[0]) {
+    console.log('Assignment has recieved Grade... Clearing interval');
+    return getStorage(writeStorage);
+  };
 
   console.log('Assignment not submitted...');
   
-  setTimeout(checkBtn, 500);
+  setTimeout(checkCompleted, 500);
 
 }
 
 const writeStorage = function() {
-  if ($(submitBtn).text() === 'Submit Assignment' || $(submitBtn).text() === 'Edit Draft') return console.log('Assignment not submitted\nNo action taken.');
+  // if ($(submitBtn).text() === 'Submit Assignment' || $(submitBtn).text() === 'Edit Draft') return console.log('Assignment not submitted\nNo action taken.');
 
   if (schoologyData.some(obj => obj.id === assignmentId)) return console.log('Assignment already in Chrome Storage.')
 
