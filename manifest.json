@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Schoology Check",
-  "description": "NOTE: If you have completed assignments when you first install this extension the checks will not pop up right away. You have to click on the assignments you have completed for the extension to register that they need to have a check mark.",
+  "description": "Puts check marks next to completed assignments after you click on them.",
   "version": "1.3.7",
   "author": "Jacob Sadowyj",
   "content_scripts": [{
