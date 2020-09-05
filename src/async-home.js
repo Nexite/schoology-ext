@@ -1,35 +1,39 @@
-const assignments = 'div.upcoming-event.course-event a'
+const assignments =
+  'div.upcoming-events div.upcoming-event.course-event span a';
 const intervalTimer = 200;
 
 // jQuery Document Ready
-$(function() {
+$(function () {
   console.log('jQuery Ready...');
   setTimeout(assignmentsInterval, intervalTimer);
 });
 
-const assignmentsInterval = function() {
+const assignmentsInterval = function () {
   if ($(assignments).length > 0) return getStorage(writeChecks);
   setTimeout(assignmentsInterval, intervalTimer);
 };
 
-const writeChecks = function() {
-
+const writeChecks = function () {
   let completedID = [];
 
-  $(assignments).each(function() {
+  $(assignments).each(function () {
     let relURL = this.pathname;
+
+    if (!relURL.includes('assignment')) return;
 
     let assignmentID = Number(relURL.split('/')[2]);
 
-    if(!relURL.includes('assignment')) return;
-
-    schoologyData.forEach(obj => { if(Number(obj.id) == assignmentID) completedID.push(assignmentID) });
-
+    schoologyData.forEach((obj) => {
+      if (Number(obj.id) == assignmentID) completedID.push(assignmentID);
+    });
   });
 
-  completedID.forEach(id => {
+  console.log(completedID);
 
-    const element = document.querySelector(`a[href="/assignment/${id}"]`);
+  completedID.forEach((id) => {
+    const element = document.querySelector(
+      `div.upcoming-events a[href="/assignment/${id}"]`
+    );
 
     let span = document.createElement('span');
 
@@ -38,8 +42,5 @@ const writeChecks = function() {
     span.innerHTML = '✔';
 
     element.parentNode.insertBefore(span, element.nextSibling);
-
-  })
-  
-}
-
+  });
+};
