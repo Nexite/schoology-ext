@@ -4,15 +4,18 @@ const chromeStorage = chrome.storage.sync;
 let schoologyData = [];
 
 const getStorage = function (callback) {
-  chromeStorage.get('schoology-data', function ({
-    'schoology-data': storedArr,
-  }) {
-    schoologyData = storedArr;
+  return new Promise((resolve, reject) => {
+    chromeStorage.get('schoology-data', function ({
+      'schoology-data': storedArr,
+    }) {
+      schoologyData = storedArr;
 
-    if (typeof schoologyData === 'undefined') {
-      chromeStorage.set({ 'schoology-data': [] }, () => getStorage(callback));
-    } else {
-      callback();
-    }
+      if (typeof schoologyData === 'undefined') {
+        chromeStorage.set({ 'schoology-data': [] }, () => getStorage(callback));
+      } else {
+        resolve(schoologyData);
+        if (callback) callback();
+      }
+    });
   });
 };

@@ -8,8 +8,11 @@ $(function () {
   setTimeout(assignmentsInterval, intervalTimer);
 });
 
-const assignmentsInterval = function () {
-  if ($(assignments).length > 0) return getStorage(writeChecks);
+const assignmentsInterval = async () => {
+  if ($(assignments).length > 0) {
+    await getStorage();
+    return writeChecks();
+  }
   setTimeout(assignmentsInterval, intervalTimer);
 };
 

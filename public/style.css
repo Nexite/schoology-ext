@@ -1,28 +1,27 @@
 body {
-  /* height: 15em; */
-  width: 16em;  
+  width: 16em;
+  /* margin-bottom: 1em; */
 }
 
-h2 {
-  color: rgb(49, 49, 49)
+#header {
+  margin-top: 0.5em;
+  display: inline-block;
+  color: rgb(49, 49, 49);
 }
 
-.container {
-  margin: auto auto;
-  /* padding: 10em 7em 5em 3em */
-
-}
-
-input#id-input {
-  margin: auto auto;
+#id-input {
   margin-bottom: 1em;
-  width: 100%;
 }
 
-button {
-  display: block;
-  width: 100%;
-  /* margin: auto auto; */
-  padding: 0.2em;
+#upload,
+#remove {
+  margin-bottom: 0.5em;
+}
+
+#clear {
+  margin-bottom: 1em;
+}
+
+#info {
   margin-bottom: 0.5em;
 }
