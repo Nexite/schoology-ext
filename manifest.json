@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Schoology Check",
   "description": "Puts check marks next to completed assignments after you click on them.",
-  "version": "1.3.9",
+  "version": "1.3.10",
   "author": "Jacob Sadowyj",
   "content_scripts": [
     {

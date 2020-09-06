@@ -11,7 +11,9 @@ const getStorage = function (callback) {
       schoologyData = storedArr;
 
       if (typeof schoologyData === 'undefined') {
-        chromeStorage.set({ 'schoology-data': [] }, () => getStorage(callback));
+        chromeStorage.set({ 'schoology-data': [] }, () =>
+          resolve(getStorage(callback))
+        );
       } else {
         resolve(schoologyData);
         if (callback) callback();
