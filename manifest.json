@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Schoology Check",
+  "name": "Schoology Completion Extension",
   "description": "Puts check marks next to completed assignments after you click on them.",
   "version": "1.3.10",
   "author": "Jacob Sadowyj",
@@ -13,6 +13,8 @@
         "https://app.schoology.com/home",
         "https://fuhsd.schoology.com/",
         "https://fuhsd.schoology.com/home",
+        "https://schoology.westportps.org/",
+        "https://schoology.westportps.org/home",
         "https://*.schoology.com/",
         "https://*.schoology.com/home"
       ],
@@ -23,12 +25,23 @@
         "https://schoology.monroeisd.us/assignment/*",
         "https://app.schoology.com/assignment/*",
         "https://fuhsd.schoology.com/assignment/*",
+        "https://schoology.westportps.org/assignment/*",
         "https://*.schoology.com/assignment/*"
       ],
       "js": [
         "src/jquery-3.5.0.min.js",
         "src/shared.js",
         "src/async-assignment.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://schoology.westportps.org/calendar/*"
+      ],
+      "js": [
+        "src/jquery-3.5.0.min.js",
+        "src/shared.js",
+        "src/async-calendar.js"
       ]
     }
   ],

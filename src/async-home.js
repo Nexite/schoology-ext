@@ -1,5 +1,5 @@
 const assignments =
-  'div.upcoming-events div.upcoming-event.course-event span a';
+  'div.upcoming-event.course-event span a';
 const intervalTimer = 200;
 
 // jQuery Document Ready
@@ -17,7 +17,9 @@ const assignmentsInterval = async () => {
 };
 
 const writeChecks = function () {
-  let completedID = [];
+  console.log(schoologyData);
+
+  let completedEle = [];
 
   $(assignments).each(function () {
     let relURL = this.pathname;
@@ -27,15 +29,19 @@ const writeChecks = function () {
     let assignmentID = Number(relURL.split('/')[2]);
 
     schoologyData.forEach((obj) => {
-      if (Number(obj.id) == assignmentID) completedID.push(assignmentID);
+      if (Number(obj.id) === assignmentID) completedEle.push([assignmentID, obj.desc]);
     });
   });
 
-  console.log(completedID);
+  console.log(completedEle );
 
-  completedID.forEach((id) => {
+  completedEle.forEach((ele) => {
     const element = document.querySelector(
-      `div.upcoming-events a[href="/assignment/${id}"]`
+        `div a[href="/assignment/${ele[0]}"]`
+    );
+
+    const time = element.parentElement.querySelector(
+        `span.upcoming-time`
     );
 
     let span = document.createElement('span');
@@ -43,6 +49,10 @@ const writeChecks = function () {
     span.className += 'check';
 
     span.innerHTML = '✔';
+    span.style.color = "rgb(35,177,5)";
+
+    time.innerHTML = time.innerHTML + " | " + ele[1];
+    time.style.color = "rgb(35,177,5)";
 
     element.parentNode.insertBefore(span, element.nextSibling);
   });
