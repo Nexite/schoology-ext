@@ -51,8 +51,10 @@ const writeChecks = function () {
     span.innerHTML = '✔';
     span.style.color = "rgb(35,177,5)";
 
-    time.innerHTML = time.innerHTML + " | " + ele[1];
-    time.style.color = "rgb(35,177,5)";
+    if (time !== null) {
+      time.innerHTML = time.innerHTML + " | " + ele[1];
+      time.style.color = "rgb(35,177,5)";
+    }
 
     element.parentNode.insertBefore(span, element.nextSibling);
   });
