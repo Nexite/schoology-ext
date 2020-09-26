@@ -2,21 +2,27 @@
   "manifest_version": 2,
   "name": "Schoology Completion Extension",
   "description": "Schoology extension that makes it easy to distinguish completed assignments.",
-  "version": "1.3.10",
+  "version": "1.3.12",
   "author": "Jacob Sadowyj + Ryan Salik",
   "content_scripts": [
     {
       "matches": [
-        "https://schoology.monroeisd.us/",
-        "https://schoology.monroeisd.us/home",
-        "https://app.schoology.com/",
-        "https://app.schoology.com/home",
-        "https://fuhsd.schoology.com/",
-        "https://fuhsd.schoology.com/home",
-        "https://schoology.westportps.org/",
-        "https://schoology.westportps.org/home",
-        "https://*.schoology.com/",
-        "https://*.schoology.com/home"
+        "*://schoology.monroeisd.us/",
+        "*://schoology.monroeisd.us/home",
+        "*://app.schoology.com/",
+        "*://app.schoology.com/home",
+        "*://fuhsd.schoology.com/",
+        "*://fuhsd.schoology.com/home",
+        "*://cfisd.schoology.com/",
+        "*://cfisd.schoology.com/home",
+        "*://cfisd.schoology.com/home/*",
+        "*://*.schoology.com/",
+        "*://*.schoology.com/home",
+        "*://*.schoology.com/home/*",
+        "*://westportps.schoology.org/",
+        "*://westportps.schoology.org/home",
+        "*://*/home",
+        "*://*/home/*"
       ],
       "js": [
         "src/jquery-3.5.0.min.js",
@@ -26,11 +32,13 @@
     },
     {
       "matches": [
-        "https://schoology.monroeisd.us/assignment/*",
-        "https://app.schoology.com/assignment/*",
-        "https://fuhsd.schoology.com/assignment/*",
-        "https://schoology.westportps.org/assignment/*",
-        "https://*.schoology.com/assignment/*"
+        "*://schoology.monroeisd.us/assignment/*",
+        "*://app.schoology.com/assignment/*",
+        "*://fuhsd.schoology.com/assignment/*",
+        "*://cfisd.schoology.com/assignment/*",
+        "*://schoology.westportps.org/assignment/*",
+        "*://*.schoology.com/assignment/*",
+        "*://*/assignment/*"
       ],
       "js": [
         "src/jquery-3.5.0.min.js",
