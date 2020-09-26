@@ -13,15 +13,24 @@ body {
   margin-bottom: 1em;
 }
 
-#upload,
-#remove {
+#add,
+#remove,
+#clear {
   margin-bottom: 0.5em;
 }
 
-#clear {
+#color {
+  padding: 0;
+  box-sizing: border-box;
+
   margin-bottom: 1em;
+  border: 3px solid;
 }
 
 #info {
   margin-bottom: 0.5em;
+}
+
+#colorpicker {
+  display: none;
 }

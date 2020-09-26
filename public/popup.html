@@ -14,20 +14,24 @@
   </head>
   <body>
     <div class="ui container center aligned">
-      <h2 id="header" class="ui header">Input Assignment IDs</h2>
+      <h2 id="header" class="ui header">Schoology Completion Extension</h2>
       <div class="small fluid ui input">
-        <input type="number" id="id-input" placeholder="2990211245" />
+        <input type="number" id="id-input" placeholder="Assignment ID" />
       </div>
       <div>
-        <button class="small fluid ui button primary btn-control" id="upload">
-          Upload
+        <button class="small fluid ui button primary btn-control" id="add">
+          Add
         </button>
         <button class="small fluid ui button negative btn-control" id="remove">
           Remove
         </button>
         <button class="small fluid ui button green btn-control" id="clear">
-          Clear Checks
+          Clear Assignments
         </button>
+        <button class="small fluid ui button cp-color btn-control" id="color">
+          Set Completed Assignment Color
+        </button>
+          <input type="color" id="colorpicker">
       </div>
 
       <p class="clearText"></p>

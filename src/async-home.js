@@ -2,6 +2,12 @@ const assignments =
   'div.upcoming-event.course-event span a';
 const intervalTimer = 200;
 
+document.styleSheets[0].insertRule(":root{--comp-color: #000000; --cal-border-color: #000000; --cal-text-color: #000000}");
+
+setInterval(() => {
+  updateColor();
+}, 500);
+
 // jQuery Document Ready
 $(function () {
   console.log('jQuery Ready...');
@@ -18,6 +24,7 @@ const assignmentsInterval = async () => {
 
 const writeChecks = function () {
   console.log(schoologyData);
+  console.log(completeColor);
 
   let completedEle = [];
 
@@ -49,11 +56,11 @@ const writeChecks = function () {
     span.className += 'check';
 
     span.innerHTML = '✔';
-    span.style.color = "rgb(35,177,5)";
+    span.style.color = 'var(--comp-color)';
 
     if (time !== null) {
       time.innerHTML = time.innerHTML + " | " + ele[1];
-      time.style.color = "rgb(35,177,5)";
+      time.style.color = 'var(--comp-color)';
     }
 
     element.parentNode.insertBefore(span, element.nextSibling);
