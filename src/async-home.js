@@ -33,7 +33,7 @@ const writeChecks = function () {
     });
   });
 
-  console.log(completedEle );
+  console.log(completedEle);
 
   completedEle.forEach((ele) => {
     const element = document.querySelector(

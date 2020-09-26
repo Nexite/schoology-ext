@@ -2,6 +2,13 @@ const assignments =
     'div.fc-event';
 const intervalTimer = 200;
 
+document.styleSheets[0].insertRule(":root{--comp-color: #000000; --cal-border-color: #000000; --cal-text-color: #000000}");
+
+setInterval(() => {
+    updateColor();
+}, 500);
+
+
 // jQuery Document Ready
 $(function () {
     console.log('jQuery Ready...');
@@ -21,8 +28,7 @@ const updateCalendar = function () {
 
     document.querySelectorAll(assignments).forEach((element) => {
         let assignmentName = element.querySelector(
-            'span.infotip'
-        ).innerHTML.split('<')[0];
+            'span.infotip').innerHTML.split('<')[0];
 
         console.log(assignmentName);
 
@@ -33,11 +39,15 @@ const updateCalendar = function () {
 
     console.log(completedElements);
 
+
     completedElements.forEach((element) => {
-        element.style.background = 'lime';
-        element.style.borderColor = 'green';
+        element.style.background = "var(--comp-color)";
+        element.style.borderColor = "var(--comp-border-color)";
+        element.querySelector(
+            'span.infotip').style.color = "var(--comp-text-color)";
     });
 
     console.log(schoologyData);
 
 };
+
