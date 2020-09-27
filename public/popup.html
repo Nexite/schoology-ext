@@ -1,45 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
-      integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="ui container center aligned">
-      <h2 id="header" class="ui header">Schoology Completion Extension</h2>
-      <div class="small fluid ui input">
-        <input type="number" id="id-input" placeholder="Assignment ID" />
-      </div>
-      <div>
-        <button class="small fluid ui button primary btn-control" id="add">
-          Add
-        </button>
-        <button class="small fluid ui button negative btn-control" id="remove">
-          Remove
-        </button>
-        <button class="small fluid ui button green btn-control" id="clear">
-          Clear Assignments
-        </button>
-        <button class="small fluid ui button cp-color btn-control" id="color">
-          Set Completed Assignment Color
-        </button>
-          <input type="color" id="colorpicker">
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+          integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+          crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="style.css" />
+  <title>Document</title>
+</head>
+<body>
+<div class="ui container center aligned">
+  <h2 id="header" class="ui header">Input Assignment ID's</h2>
+  <div class="small fluid ui input">
+    <input type="number" id="id-input" placeholder="2990211245" />
+  </div>
+  <div>
+    <button class="small fluid ui button primary btn-control" id="upload">
+      Upload
+    </button>
+    <button class="small fluid ui button negative btn-control" id="remove">
+      Remove
+    </button>
+    <button class="small fluid ui button green btn-control" id="clear">
+      Clear Checks
+    </button>
+  </div>
 
-      <p class="clearText"></p>
-      <p id="info"></p>
-    </div>
+  <p class="clearText"></p>
+  <p id="info"></p>
+</div>
 
-    <script src="../src/jquery-3.5.0.min.js"></script>
-    <script src="../src/shared.js"></script>
-    <script src="popup.js"></script>
-  </body>
+<script src="../src/jquery-3.5.0.min.js"></script>
+<script src="../src/utils.js"></script>
+<script src="popup.js"></script>
+</body>
 </html>
