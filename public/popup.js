@@ -1,9 +1,19 @@
-const input = $('#id-input')[0];
-const uploadBtn = $('#upload')[0];
-const clearBtn = document.getElementById('clear');
-const removeBtn = document.getElementById('remove');
-const clearText = document.querySelector('.clearText');
-const info = document.getElementById('info');
+let input;
+let btnAdd;
+let btnClear;
+let btnRemove;
+let clearText;
+let info;
+
+$(document).ready()
+{
+  input = $('#id-input')[0];
+  btnAdd = $('#upload')[0];
+  btnClear = document.getElementById('clear');
+  btnRemove = document.getElementById('remove');
+  clearText = document.querySelector('.clearText');
+  info = document.getElementById('info');
+}
 
 const addInfo = function (str, append) {
   input.value = '';
@@ -12,70 +22,56 @@ const addInfo = function (str, append) {
 };
 
 const resetStorage = function () {
-  chromeStorage.set({ 'schoology-data': [] }, function () {
-    chromeStorage.get('schoology-data', function (result) {
-      console.log(result);
-    });
-  });
+  set(assignments, []);
 };
 
-const uploadStorage = function () {
+const uploadStorage = async () => {
+  let assignmentArray = await get(assignments);
+
   let duplicateValue = false;
 
-  schoologyData.forEach((obj) => {
+  $.each(assignmentArray, (obj) => {
     if (Number(obj.id) === Number(input.value)) duplicateValue = true;
   });
 
   if (duplicateValue) return addInfo('No Duplicate Values!', false);
 
-  schoologyData.push({ id: Number(input.value) });
-
-  chromeStorage.set({ 'schoology-data': schoologyData }, function () {
-    chromeStorage.get('schoology-data', function (result) {
-      console.log(result);
-      addInfo(`ID Uploaded (${input.value})`, true);
-    });
+  assignmentArray.push({
+    id: Number(input.value),
+    name: "",
+    description: "Manually Added"
   });
+
+  set(assignments, assignmentArray);
 };
 
-uploadBtn.addEventListener('click', () => {
+btnAdd.addEventListener('click', async () => {
   clearText.innerHTML = '';
   clearCount = 0;
-  if (input.value === '') {
-    chromeStorage.get(function (result) {
-      console.log(result);
-    });
-    return;
-  }
-  getStorage(uploadStorage);
+
+  if (input.value === '') return;
+  await uploadStorage();
 });
 
-// const removedIDs = [];
-
-removeBtn.addEventListener('click', function () {
+btnRemove.addEventListener('click', async () => {
   if (input.value === '') return;
 
-  getStorage(function () {
-    const newData = schoologyData.filter(
-      (obj) => Number(obj.id) !== Number(input.value)
-    );
+  let assignmentArray = await get(assignments);
 
-    if (schoologyData.length === newData.length)
-      return addInfo(`ID Already Removed!`, false);
+  const newData = assignmentArray.filter(
+    (obj) => Number(obj.id) !== Number(input.value)
+  );
 
-    chromeStorage.set({ 'schoology-data': newData }, () => {
-      // removedIDs.push(Number(input.value));
-      chromeStorage.get(function (result) {
-        console.log(result);
-      });
-      addInfo(`Removed ID (${input.value})`, true);
-    });
-  });
+  if (assignmentArray.length === newData.length)
+    return addInfo(`ID Already Removed!`, false);
+
+  set(assignments, assignmentArray);
+  addInfo(`Removed ID (${input.value})`, true);
 });
 
 let clearCount = 0;
 
-clearBtn.addEventListener('click', function () {
+btnClear.addEventListener('click', function () {
   resetStorage();
   clearText.innerHTML =
     clearCount === 0 ? 'Cleared!' : `Cleared ${clearCount + 1} times!`;
