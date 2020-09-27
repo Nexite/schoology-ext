@@ -1,49 +1,41 @@
 {
   "manifest_version": 2,
-  "name": "Schoology Completion Extension",
+  "name": "Schoology Check",
   "description": "Schoology extension that makes it easy to distinguish completed assignments.",
-  "version": "1.3.12",
-  "author": "Jacob Sadowyj + Ryan Salik",
+  "version": "1.4.0",
+  "author": "Jacob Sadowyj & Ryan Salik",
   "content_scripts": [
     {
       "matches": [
-        "*://schoology.monroeisd.us/",
-        "*://schoology.monroeisd.us/home",
-        "*://app.schoology.com/",
-        "*://app.schoology.com/home",
-        "*://fuhsd.schoology.com/",
-        "*://fuhsd.schoology.com/home",
-        "*://cfisd.schoology.com/",
-        "*://cfisd.schoology.com/home",
-        "*://cfisd.schoology.com/home/*",
-        "*://*.schoology.com/",
-        "*://*.schoology.com/home",
-        "*://*.schoology.com/home/*",
-        "*://westportps.schoology.org/",
-        "*://westportps.schoology.org/home",
-        "*://*/home",
-        "*://*/home/*"
+        "https://schoology.monroeisd.us/",
+        "https://schoology.monroeisd.us/home",
+        "https://schoology.westportps.org/",
+        "https://schoology.westportps.org/home",
+        "https://*.schoology.com/",
+        "https://*.schoology.com/home"
       ],
       "js": [
         "src/jquery-3.5.0.min.js",
-        "src/shared.js",
-        "src/async-home.js"
+        "src/utils.js",
+        "src/home.js"
+      ],
+      "css": [
+        "src/css/home.css"
       ]
     },
     {
       "matches": [
-        "*://schoology.monroeisd.us/assignment/*",
-        "*://app.schoology.com/assignment/*",
-        "*://fuhsd.schoology.com/assignment/*",
-        "*://cfisd.schoology.com/assignment/*",
-        "*://schoology.westportps.org/assignment/*",
-        "*://*.schoology.com/assignment/*",
-        "*://*/assignment/*"
+        "https://schoology.monroeisd.us/assignment/*",
+        "https://schoology.westportps.org/assignment/*",
+        "https://*.schoology.com/assignment/*"
       ],
       "js": [
         "src/jquery-3.5.0.min.js",
-        "src/shared.js",
-        "src/async-assignment.js"
+        "src/utils.js",
+        "src/assignments.js"
+      ],
+      "css": [
+        "src/css/assignments.css"
       ]
     },
     {
@@ -53,8 +45,11 @@
       ],
       "js": [
         "src/jquery-3.5.0.min.js",
-        "src/shared.js",
-        "src/async-calendar.js"
+        "src/utils.js",
+        "src/calendar.js"
+      ],
+      "css": [
+        "src/css/calendar.css"
       ]
     }
   ],
