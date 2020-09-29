@@ -1,5 +1,5 @@
 :root {
-    --completed-color: #04ae04;
-    --completed-border-color: black;
-    --completed-text-color: black;
+    --completed-color: black;
+    --completed-border-color: white;
+    --completed-text-color: white;
 }
