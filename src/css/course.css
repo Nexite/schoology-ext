@@ -1,0 +1,20 @@
+:root {
+  --completed-color: #59b655;
+}
+
+.upcoming-event.course-event h4 {
+  padding-top: 0px;
+}
+
+.upcoming-event.course-event h4 .mini-icon {
+  margin-top: 2px;
+}
+
+.upcoming-event.course-event h4 a {
+  width: calc(100% - 50px);
+  float: left;
+}
+
+.upcoming-event.course-event h4 .upcoming-time {
+  display: inline-block;
+}
