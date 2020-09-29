@@ -29,6 +29,12 @@ $(document).ready()
 
     colorPicker.value = color;
   })
+  input = $('#id-input')[0];
+  btnAdd = $('#upload')[0];
+  btnClear = document.getElementById('clear');
+  btnRemove = document.getElementById('remove');
+  clearText = document.querySelector('.clearText');
+  info = document.getElementById('info');
 }
 
 const addInfo = function (str, append) {
@@ -118,4 +124,3 @@ colorPicker.addEventListener('input', () => {
     chrome.tabs.sendMessage(tabs[0].id, {greeting: "color"});
   });
 });
-

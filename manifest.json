@@ -7,12 +7,22 @@
   "content_scripts": [
     {
       "matches": [
-        "https://schoology.monroeisd.us/",
-        "https://schoology.monroeisd.us/home",
-        "https://schoology.westportps.org/",
-        "https://schoology.westportps.org/home",
-        "https://*.schoology.com/",
-        "https://*.schoology.com/home"
+        "*://schoology.monroeisd.us/",
+        "*://schoology.monroeisd.us/home",
+        "*://app.schoology.com/",
+        "*://app.schoology.com/home",
+        "*://fuhsd.schoology.com/",
+        "*://fuhsd.schoology.com/home",
+        "*://cfisd.schoology.com/",
+        "*://cfisd.schoology.com/home",
+        "*://cfisd.schoology.com/home/*",
+        "*://schoology.westportps.org/",
+        "*://schoology.westportps.org/home",
+        "*://*.schoology.com/",
+        "*://*.schoology.com/home",
+        "*://*.schoology.com/home/*",
+        "*://*/home",
+        "*://*/home/*"
       ],
       "js": [
         "src/jquery-3.5.0.min.js",
@@ -20,15 +30,17 @@
         "src/home.js",
         "src/foreground.js"
       ],
-      "css": [
-        "src/css/home.css"
-      ]
+      "css": ["src/css/home.css"]
     },
     {
       "matches": [
-        "https://schoology.monroeisd.us/assignment/*",
+        "*://schoology.monroeisd.us/assignment/*",
+        "*://app.schoology.com/assignment/*",
+        "*://fuhsd.schoology.com/assignment/*",
+        "*://cfisd.schoology.com/assignment/*",
         "https://schoology.westportps.org/assignment/*",
-        "https://*.schoology.com/assignment/*"
+        "*://*.schoology.com/assignment/*",
+        "*://*/assignment/*"
       ],
       "js": [
         "src/jquery-3.5.0.min.js",
@@ -36,9 +48,7 @@
         "src/assignments.js",
         "src/foreground.js"
       ],
-      "css": [
-        "src/css/assignments.css"
-      ]
+      "css": ["src/css/assignments.css"]
     },
     {
       "matches": [
@@ -51,9 +61,7 @@
         "src/calendar.js",
         "src/foreground.js"
       ],
-      "css": [
-        "src/css/calendar.css"
-      ]
+      "css": ["src/css/calendar.css"]
     }
   ],
   "browser_action": {

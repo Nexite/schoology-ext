@@ -15,7 +15,6 @@ const updateCalendar = function (completedAssignments) {
   $.each(calendarAssignments, (index, element) => {
     let assignmentName = $(element).find('span.infotip').html().split('<')[0];
 
-
     $.each(completedAssignments, (index, obj) => {
       if (assignmentName === obj.name) {
         completedCalendarAssignments.push($(element));
@@ -25,8 +24,8 @@ const updateCalendar = function (completedAssignments) {
 
   // Update each completed assignment
   $.each(completedCalendarAssignments, (index, element) => {
-    element.css('background-color', "var(--completed-color)");
-    element.css('border-color', "var(--completed-border-color)");
-    element.find('span.infotip').css('color', "var(--completed-text-color)");
+    element.css('background-color', 'var(--completed-color)');
+    element.css('border-color', 'var(--completed-border-color)');
+    element.find('span.infotip').css('color', 'var(--completed-text-color)');
   });
-}
+};
