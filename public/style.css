@@ -1,36 +1,53 @@
-  body {
-  width: 16em;
-  /* margin-bottom: 1em; */
+:root {
+    --completed-color: black;
+    --completed-text-color: white;
+    --completed-border-color: white;
+}
+
+body {
+    width: 16em;
+    /* margin-bottom: 1em; */
 }
 
 #header {
-  margin-top: 0.5em;
-  display: inline-block;
-  color: rgb(49, 49, 49);
+    margin-top: 0.5em;
+    display: inline-block;
+    color: rgb(49, 49, 49);
 }
 
 #id-input {
-  margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 
 #add,
 #remove,
 #clear {
-  margin-bottom: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 #color {
-  padding: 0;
-  box-sizing: border-box;
+    padding: 0;
+    box-sizing: border-box;
 
-  margin-bottom: 1em;
-  border: 3px solid;
+    margin-bottom: 1em;
+    border: 3px solid;
+    border-color: var(--completed-border-color);
+    background-color: var(--completed-color);
+    color: var(--completed-text-color);
 }
 
 #info {
-  margin-bottom: 0.5em;
+    margin-bottom: 0.5em;
 }
 
-#colorpicker {
-  display: none;
+#color-picker {
+    display: none;
+}
+
+#color {
+    padding: 0;
+    box-sizing: border-box;
+
+    margin-bottom: 1em;
+    border: 3px solid;
 }

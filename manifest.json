@@ -24,7 +24,12 @@
         "*://*/home",
         "*://*/home/*"
       ],
-      "js": ["src/jquery-3.5.0.min.js", "src/utils.js", "src/home.js"],
+      "js": [
+        "src/jquery-3.5.0.min.js",
+        "src/utils.js",
+        "src/home.js",
+        "src/foreground.js"
+      ],
       "css": ["src/css/home.css"]
     },
     {
@@ -37,7 +42,12 @@
         "*://*.schoology.com/assignment/*",
         "*://*/assignment/*"
       ],
-      "js": ["src/jquery-3.5.0.min.js", "src/utils.js", "src/assignments.js"],
+      "js": [
+        "src/jquery-3.5.0.min.js",
+        "src/utils.js",
+        "src/assignments.js",
+        "src/foreground.js"
+      ],
       "css": ["src/css/assignments.css"]
     },
     {
@@ -45,7 +55,12 @@
         "https://schoology.westportps.org/calendar/*",
         "https://*.schoology.com/calendar/*"
       ],
-      "js": ["src/jquery-3.5.0.min.js", "src/utils.js", "src/calendar.js"],
+      "js": [
+        "src/jquery-3.5.0.min.js",
+        "src/utils.js",
+        "src/calendar.js",
+        "src/foreground.js"
+      ],
       "css": ["src/css/calendar.css"]
     }
   ],
@@ -53,9 +68,13 @@
     "default_popup": "public/popup.html",
     "default-icon": "public/schoology-icon.png"
   },
-  "permissions": ["storage"],
+  "permissions": [
+    "storage"
+  ],
   "background": {
-    "scripts": ["src/jquery-3.5.0.min.js"]
+    "scripts": [
+      "src/jquery-3.5.0.min.js"
+    ]
   },
   "icons": {
     "16": "public/schoology-icon.png",

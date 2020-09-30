@@ -2,11 +2,33 @@ let input;
 let btnAdd;
 let btnClear;
 let btnRemove;
+let btnColor;
+let colorPicker;
 let clearText;
 let info;
 
 $(document).ready()
 {
+  input = document.getElementById('id-input')
+  btnAdd = document.getElementById('add')
+  btnClear = document.getElementById('clear');
+  btnRemove = document.getElementById('remove');
+  btnColor = document.getElementById('color');
+  colorPicker = document.getElementById('color-picker');
+  clearText = document.getElementById('clear-text');
+  info = document.getElementById('info');
+
+  btnColor.style.height = $(btnClear).outerHeight() + 'px';
+  get(completedColor, local).then((color) => {
+
+    if (updateColors(color)) {
+      btnColor.style.border = "2px solid";
+    } else {
+      btnColor.style.border = "0";
+    }
+
+    colorPicker.value = color;
+  })
   input = $('#id-input')[0];
   btnAdd = $('#upload')[0];
   btnClear = document.getElementById('clear');
@@ -81,4 +103,24 @@ btnClear.addEventListener('click', function () {
 input.addEventListener('click', () => {
   clearText.innerHTML = '';
   clearCount = 0;
+});
+
+// Make sure btnColor border-box works (border-box requires defined height)
+
+btnColor.addEventListener('click', () => {
+  colorPicker.click();
+});
+
+colorPicker.addEventListener('input', () => {
+  set(completedColor, colorPicker.value, local);
+
+  if (updateColors(colorPicker.value)) {
+    btnColor.style.border = "2px solid";
+  } else {
+    btnColor.style.border = "0";
+  }
+
+  chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {greeting: "color"});
+  });
 });

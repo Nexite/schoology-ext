@@ -11,21 +11,17 @@ let markedDone;
 
 $(document).ready(async () => {
   // Initialize variables
-  assignmentName = $('h2.page-title').html();
+  assignmentName = $("h2.page-title").html();
   gradeText = $('.grading-grade span.received-grade');
-  btnSubmit = $(
-    `a[href="/assignment/${assignmentID}/dropbox/submit"].link-btn`
-  );
+  btnSubmit = $(`a[href="/assignment/${assignmentID}/dropbox/submit"].link-btn`);
 
   // Create Mark as Done button
-  btnSubmit
-    .parent()
-    .after('<div class="" id="schoology-check-mark-done"></div>');
-  btnMarkDone = $('#schoology-check-mark-done');
+  btnSubmit.parent().after('<div class="" id="schoology-check-mark-done"></div>');
+  btnMarkDone = $("#schoology-check-mark-done");
 
   updateMarkDoneBtn();
 
-  btnMarkDone.on('click', () => {
+  btnMarkDone.on("click", () => {
     markedDone = !markedDone;
     updateMarkDoneBtn();
     if (markedDone) addCompletedAssignment();
@@ -53,11 +49,11 @@ $(document).ready(async () => {
 });
 
 const removeCompletedAssignment = function () {
-  if (!assignmentArray.some((obj) => obj.id === assignmentID)) return;
+  if (!(assignmentArray.some((obj) => obj.id === assignmentID))) return;
 
   assignmentArray = assignmentArray.filter((obj) => obj.id !== assignmentID);
   set(assignments, assignmentArray);
-};
+}
 
 // Check if this assignment is completed, and if so, add it to storage.
 const addCompletedAssignment = function () {
@@ -73,7 +69,7 @@ const addCompletedAssignment = function () {
     assignmentArray.push({
       id: assignmentID,
       name: assignmentName,
-      description: description,
+      description: description
     });
 
     set(assignments, assignmentArray);
