@@ -1,6 +1,5 @@
 # Schoology Check
 Chrome extension that helps you easily distinguish completed assignments from non-completed assignments on Schoology.
-[![Build Status](https://travis-ci.com/jsadowyj0/schoology-ext.svg?branch=master)](https://travis-ci.com/jsadowyj0/schoology-ext)
 
 ## Home Page
 ### Without Extension:
