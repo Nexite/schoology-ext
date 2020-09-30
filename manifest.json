@@ -30,7 +30,9 @@
         "src/home.js",
         "src/foreground.js"
       ],
-      "css": ["src/css/home.css"]
+      "css": [
+        "src/css/home.css"
+      ]
     },
     {
       "matches": [
@@ -42,8 +44,15 @@
         "*://*.schoology.com/course/*",
         "*://*/course/*"
       ],
-      "js": ["src/jquery-3.5.0.min.js", "src/utils.js", "src/course.js"],
-      "css": ["src/css/course.css"]
+      "js": [
+        "src/jquery-3.5.0.min.js",
+        "src/utils.js",
+        "src/course.js",
+        "src/foreground.js"
+      ],
+      "css": [
+        "src/css/course.css"
+      ]
     },
     {
       "matches": [
@@ -61,7 +70,9 @@
         "src/assignments.js",
         "src/foreground.js"
       ],
-      "css": ["src/css/assignments.css"]
+      "css": [
+        "src/css/assignments.css"
+      ]
     },
     {
       "matches": [
@@ -74,7 +85,9 @@
         "src/calendar.js",
         "src/foreground.js"
       ],
-      "css": ["src/css/calendar.css"]
+      "css": [
+        "src/css/calendar.css"
+      ]
     }
   ],
   "browser_action": {
