@@ -43,6 +43,45 @@ const lightenColor = function (color, percent) {
   return '#' + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 + (B < 255 ? B < 1 ? 0 : B : 255) * 0x100 + (G < 255 ? G < 1 ? 0 : G : 255)).toString(16).slice(1);
 };
 
+const updateAssignmentsFromArray = function (completedAssignments, assignmentElements) {
+  let completedAssignmentElements = [];
+
+  // Get completed assignment elements
+  $.each(assignmentElements, (index, element) => {
+    if (!element.pathname.includes('assignment')) return;
+
+    let assignmentID = element.pathname.split('/')[2];
+    $.each(completedAssignments, (index, obj) => {
+      if (assignmentID === obj.id)
+        completedAssignmentElements.push({
+          element: element,
+          description: obj.description,
+        });
+    });
+  });
+
+  // Update each completed assignment
+  $.each(completedAssignmentElements, (index, val) => {
+    const element = val.element;
+
+    const time = $($(element).parent().find('span.upcoming-time')[0]);
+    const span = $(document.createElement('span'));
+
+    span.addClass('check');
+
+    span.html('✔');
+    span.css('color', 'var(--completed-color)');
+
+    // Make sure assignment has a due date
+    if (typeof time !== 'undefined') {
+      time.html(time.html() + ' | ' + val.description);
+      time.css('color', 'var(--completed-color)');
+    }
+
+    element.parentNode.insertBefore(span[0], element.nextSibling);
+  });
+};
+
 // https://awik.io/determine-color-bright-dark-using-javascript/
 const isLight = function (color) {
   let r, g, b, hsp;

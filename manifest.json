@@ -34,6 +34,19 @@
     },
     {
       "matches": [
+        "*://schoology.monroeisd.us/course/*",
+        "*://app.schoology.com/course/*",
+        "*://fuhsd.schoology.com/course/*",
+        "*://cfisd.schoology.com/course/*",
+        "https://schoology.westportps.org/course/*",
+        "*://*.schoology.com/course/*",
+        "*://*/course/*"
+      ],
+      "js": ["src/jquery-3.5.0.min.js", "src/utils.js", "src/course.js"],
+      "css": ["src/css/course.css"]
+    },
+    {
+      "matches": [
         "*://schoology.monroeisd.us/assignment/*",
         "*://app.schoology.com/assignment/*",
         "*://fuhsd.schoology.com/assignment/*",
