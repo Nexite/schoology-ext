@@ -1,8 +1,10 @@
 let assignmentElements;
-let canlenderOpened = false;
 
 $(document).ready(() => {
   assignmentElements = $('div.upcoming-event.course-event h4 a');
+  if (window.location.href.indexOf("materials?") >= 0) {
+    assignmentElements = $('div.item-title a');
+  }
   get(assignments).then(updateAssignmentElements);
 });
 

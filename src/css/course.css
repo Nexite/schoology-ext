@@ -19,3 +19,8 @@
     display: inline-block;
     margin-top: 2px;
 }
+
+.item-title span.check {
+    padding-right: calc(15%);
+    float: right;
+}

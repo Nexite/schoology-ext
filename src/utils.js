@@ -65,13 +65,22 @@ const updateAssignmentsFromArray = function (completedAssignments, assignmentEle
   $.each(completedAssignmentElements, (index, val) => {
     const element = val.element;
 
-    const time = $($(element).parent().find('span.upcoming-time')[0]);
+    var time = null;
+    if (window.location.href.indexOf("materials?") >= 0) {
+      time = $($(element).parent().parent().find('span.small')[0]);
+    }
+    else {
+      time = $($(element).parent().find('span.upcoming-time')[0]);
+    }
     const span = $(document.createElement('span'));
 
     span.addClass('check');
 
     span.html('✔');
     span.css('color', 'var(--completed-color)');
+    // if (window.location.href.indexOf("materials?") >= 0) {
+    //   span.css('float', 'right');
+    // }
 
     // Make sure assignment has a due date
     if (typeof time !== 'undefined') {
