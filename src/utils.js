@@ -50,6 +50,7 @@ const updateAssignmentsFromArray = function (completedAssignments, assignmentEle
   $.each(assignmentElements, (index, element) => {
     if (!element.pathname.includes('assignment')) return;
 
+
     let assignmentID = element.pathname.split('/')[2];
     $.each(completedAssignments, (index, obj) => {
       if (assignmentID === obj.id)
@@ -119,3 +120,33 @@ const updateColors = function (color) {
 
   return isColorLight;
 }
+
+const updateCalendar = function (completedAssignments) {
+  let completedCalendarAssignments = [];
+
+  // Get completed assignments
+  $.each(calendarAssignments, (index, element) => {
+    let assignmentName;
+    // If is main calendar page
+    if ($(element).find('span.infotip').length !== 0) {
+      assignmentName = $(element).find('span.infotip').html().split('<')[0];
+    }
+    // If is course calender page
+    else if ($(element).find('span.fc-event-title').length != 0) {
+      assignmentName = $(element).find('span.fc-event-title').html().split('<')[0];
+    }
+
+    $.each(completedAssignments, (index, obj) => {
+      if (assignmentName === obj.name) {
+        completedCalendarAssignments.push($(element));
+      }
+    });
+  });
+
+  // Update each completed assignment
+  $.each(completedCalendarAssignments, (index, element) => {
+    element.css('background-color', 'var(--completed-color)');
+    element.css('border-color', 'var(--completed-border-color)');
+    element.find('span.infotip').css('color', 'var(--completed-text-color)');
+  });
+};
